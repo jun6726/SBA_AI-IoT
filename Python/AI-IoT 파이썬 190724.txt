@@ -1,0 +1,29 @@
+자료 입출력
+------------------
+입력 함수 input
+-문자열로 반환
+-문자열 메소드 split으로 분리
+-다른 데이터 형을 받기 위해 input 쪽에 형 변환
+
+출력함수 print
+-모든 인수 사이에 공백이 추가되어 출력
+-항상 \n이 실행
+ex) print("First Person."); print("Second Person.");
+First Person
+-줄 바꿈이 필요 없는 경우, 함수의 end인자를 호출하여 원하는 문자 입력
+ex)print("First Person.", end = '-'); print("Second Person.")
+First Persom.-Second Person.
+- : 문자열 포맷팅
+:10은 10만큼의 폭을 잡는다 (공백)
+
+조건문
+if조건문 (파이썬에서는 컨디션을 true false 외에도 값에 따라 참과 거짓을 구분가능) 6장 6p표 참조
+-if condition true/false
+	true시 들여쓰기의 코드가 실행된다
+	파이썬은 다른 언어와 다르게 괄호대신 들여쓰기로 조건문의 코드 블록을 구분한다.
+	(이중 중첩 시 두번)
+-if -else 
+	true시 if부분 / false 시 else 부분
+	if부분과 else 부분의 들여쓰기는 상관없음 (if 부분과 else 부분의 코드 블록은 서로 상관 관계가없다)
+-if-elif-else
+	다양한 조건 판단, 앞의 조건문이 거짓일 경우 확인 
