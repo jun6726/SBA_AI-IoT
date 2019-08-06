@@ -127,7 +127,7 @@
             android:id="@+id/button0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="14"
+            android:layout_weight="9"
             android:text="0" />
 
         <Button
@@ -162,6 +162,20 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="+15%" />
+
+        <Button
+            android:id="@+id/buttonClear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="C" />
+
+        <Button
+            android:id="@+id/buttonDel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Del" />
     </LinearLayout>
 
 </LinearLayout>
