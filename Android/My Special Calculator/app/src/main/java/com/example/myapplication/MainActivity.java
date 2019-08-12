@@ -1,28 +1,19 @@
 package com.example.myapplication;
 
-import android.graphics.Color;
-import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity implements SensorEventListener  {
-    Button button0, button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11, button12, button13, button14, button15, button16, buttonClear, buttonDel;
+
+public class MainActivity extends AppCompatActivity implements SensorEventListener {
+    Button button0, button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11, button12, button13, button14, button15, button16, buttonClear, buttonDel,button_left, button_right, buttondot;
     static EditText editText;
     boolean cal;
     double cal_result;
@@ -33,6 +24,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private long lastUpdate = 0;
     private float last_x, last_y, last_z;
     private static final int SHAKE_THRESHOLD = 700;
+
+    SoundManager sManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +51,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         button16 = findViewById(R.id.button16);
         buttonClear = findViewById(R.id.buttonClear);
         buttonDel = findViewById(R.id.buttonDel);
+        button_left = findViewById(R.id.button_left);
+        button_right = findViewById(R.id.button_right);
+        buttondot = findViewById(R.id.buttondot);
         editText = findViewById(R.id.editText);
 
         sensorManager = (SensorManager) this.getSystemService(SENSOR_SERVICE);
@@ -68,61 +64,70 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             @Override
             public void onClick(View v) {
                 editText.setText(editText.getText().toString() + 0);
-
+                sManager.play(0);
             }
         });
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 editText.setText(editText.getText().toString() + 1);
+                sManager.play(1);
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 editText.setText(editText.getText().toString() + 2);
+                sManager.play(2);
             }
         });
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 editText.setText(editText.getText().toString() + 3);
+                sManager.play(3);
             }
         });
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 editText.setText(editText.getText().toString() + 4);
+                sManager.play(4);
             }
         });
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 editText.setText(editText.getText().toString() + 5);
+                sManager.play(5);
             }
         });
         button6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 editText.setText(editText.getText().toString() + 6);
+                sManager.play(6);
             }
         });
         button7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 editText.setText(editText.getText().toString() + 7);
+                sManager.play(7);
             }
         });
         button8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 editText.setText(editText.getText().toString() + 8);
+                sManager.play(8);
             }
         });
         button9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 editText.setText(editText.getText().toString() + 9);
+                sManager.play(9);
             }
         });
         button10.setOnClickListener(new View.OnClickListener() {
@@ -167,7 +172,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             @Override
             public void onClick(View v) {
                 String result4del = String.valueOf(editText.getText());
-                editText.setText(result4del.substring(0,result4del.length()-1));
+                editText.setText(result4del.substring(0, result4del.length() - 1));
             }
         });
         button15.setOnClickListener(new View.OnClickListener() {
@@ -177,9 +182,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                     Toast.makeText(MainActivity.this, "계산을 완료하고 눌러주세요.", Toast.LENGTH_SHORT).show();
                 } else if (cal == true) {
                     //팁 계산
-                    cal_result =  Double.parseDouble(editText.getText().toString());
-                    cal_result = (double) (cal_result * 1.1);
-                    editText.setText(cal_result+"");
+                    cal_result = Double.parseDouble(editText.getText().toString());
+                    cal_result =  (cal_result * 1.1);
+                    editText.setText(cal_result + "");
                     cal = false;
                 }
             }
@@ -191,9 +196,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                     Toast.makeText(MainActivity.this, "계산을 완료하고 눌러주세요.", Toast.LENGTH_SHORT).show();
                 } else if (cal == true) {
                     //팁 계산
-                    cal_result = Integer.parseInt(editText.getText().toString());
-                    cal_result = (cal_result * 1.15);
-                    editText.setText(cal_result+"");
+
+                    cal_result = Double.parseDouble(editText.getText().toString());
+                    cal_result = cal_result * 1.15;
+                    editText.setText(cal_result + "");
                     cal = false;
                 }
             }
@@ -204,17 +210,53 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 editText.setText("");
             }
         });
+        button_left.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editText.setText(editText.getText().toString() + "(");
+            }
+        });
+        button_right.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editText.setText(editText.getText().toString() + ")");
+            }
+        });
+
+        buttondot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editText.setText(editText.getText().toString() + ".");
+            }
+        });
+
+        //soundManager 객체의 참조값 얻어오기
+        sManager = SoundManager.getInstance();
+        //필요한 객체를 전달해서 사용할 수 있게 초기화 한다.
+        sManager.init(this);
+        //사운드 등록하기(Thread와 같이 로딩작업을 시작하고 아래 작업으로 넘어간다)
+        sManager.addSound(0,R.raw.f_0);
+        sManager.addSound(1,R.raw.f_1);
+        sManager.addSound(2,R.raw.f_2);
+        sManager.addSound(3,R.raw.f_3);
+        sManager.addSound(4,R.raw.f_4);
+        sManager.addSound(5,R.raw.f_5);
+        sManager.addSound(6,R.raw.f_6);
+        sManager.addSound(7,R.raw.f_7);
+        sManager.addSound(8,R.raw.f_8);
+        sManager.addSound(9,R.raw.f_9);
     }
+
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
         android.hardware.Sensor mySensor = sensorEvent.sensor;
-        if(mySensor.getType() == android.hardware.Sensor.TYPE_ACCELEROMETER){
+        if (mySensor.getType() == android.hardware.Sensor.TYPE_ACCELEROMETER) {
             float x = sensorEvent.values[0];
             float y = sensorEvent.values[1];
             float z = sensorEvent.values[2];
 
             long curTime = System.currentTimeMillis(); // 현재시간
-            if((curTime - lastUpdate) > 100) {
+            if ((curTime - lastUpdate) > 100) {
                 long diffTime = (curTime - lastUpdate);
                 lastUpdate = curTime;
 

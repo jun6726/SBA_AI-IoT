@@ -4,7 +4,8 @@ import java.math.BigDecimal;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class Calculator {
+public class Calculator extends MainActivity{
+
     //------------------------------------------------------------------------
     // 괄호 까지 존재하는 사칙연사
     //------------------------------------------------------------------------
@@ -148,6 +149,7 @@ public class Calculator {
                     }else if ("/".equals(operator)) {
                         if ("0".equals(sNum2)){
                             throw new Exception("나눗셈 분모에 0 이 존재 합니다.");
+
                         }
 
                         nResult = (new BigDecimal(sNum1)).divide(new BigDecimal(sNum2), 6, BigDecimal.ROUND_UP);
