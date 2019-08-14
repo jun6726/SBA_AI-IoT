@@ -1,0 +1,22 @@
+이미지 분석 모델
+Vanishing Gradient (점진적 삭제)
+Overfitting
+Image classification
+CNN-Convolution Layer 이미지의 부분들을 중복해서 확인하면서 해당 영역이 의미하는 값들을 분석하여 줄여서 분석 - 하지만 중복되는 부분을 여러번
+		반복하면서 너무 많은 메모리를 사용하고 오래걸리기때문에, 
+	-MaxPooling Layer를 구현 - 특징이 있는 부분에 대해서만 의미값 추출 - 이미지 사이즈 축소와 특징을 일반화 시킨다.
+	4x4 영역을 2x2로 나누고 싶을때 각 2x2부분을 0,0 0,1 1,0 1,1으로 네 가지로 나눠서 가장 큰 값들만 추출하면 2x2를 가지는 이미지로 축소한다(특징을 일반화)
+	추출이 완료되면 2차원이었던 영상을 1차원인 문자열로 변경해준다(Flatten Layer)
+
+	Activation Layer - 히든 레이어에서 (은닉층) ReLU, Leaky ReLU, ELU
+			(출력층) linear-특정값, sigmoid-이진 클래스 예측, softmax-다중 클래스 예측
+
+문제 정의 - 데이터 셋 준비 - 모델 설정 - 모델 훈련 / 평가 - 모델 활용
+Supervised Learning - Cifar 10 (열가지 종류의 사진을 분류) - Neural Network
+Deep Neural Network 
+
+Microsoft Azure
+Resource - 각 기능을 리소스라 함
+Resource Group - 리소스를 사용하다보면 다른 리소스까지 같이 사용하게 되는데, 리소스를 마치고
+ 		삭제할때 리소스 그룹으로 삭제하면 다른 리소스들까지 삭제되어 편리하다.
+		리소스의 메타데이터(생성날짜, 사용자 등)의 정보를 저장할 곳을 선택한다.
