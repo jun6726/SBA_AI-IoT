@@ -1,0 +1,6 @@
+- java.lang.NoClassDefFoundError: Failed resolution of: Lorg/apache/http/impl/client/DefaultHttpClient;
+ 
+-target sdk를 28이상으로 할 때는 다음 선언을 Androidmanifes.xml > <applicaiton> 태그안에 꼭 넣어 주어야 한다고 하네요.
+  <uses-library
+      android:name="org.apache.http.legacy"
+      android:required="false" />
