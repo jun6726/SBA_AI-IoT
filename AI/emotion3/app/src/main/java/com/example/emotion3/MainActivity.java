@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
     TextView textView;
     WebView webView;
+    ImageView imageView;
+    Button btnRotaion;
 
     String emotionStrArray[] = {"Anger : ", "Contempt : ", "Disgust : ", "Fear : ", "Happiness : ", "Neutral : ", "Sadness : ", "Surprise : "};
     double emotionArray[];
@@ -66,10 +68,11 @@ public class MainActivity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent();
             }
         });
 
+        btnRotaion = findViewById(R.id.btn_rotation);
 
         detectionProgressDialog = new ProgressDialog(this);
     }
